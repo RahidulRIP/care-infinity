@@ -119,18 +119,17 @@
 
 // export default Navbar;
 
-
 "use client";
 
 import Link from "next/link";
 import Container from "./Container";
 import { signOut, useSession } from "next-auth/react";
-import { useState } from "react"; 
-import { Menu, X } from "lucide-react"; 
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const { data: session, status } = useSession();
-  const [isOpen, setIsOpen] = useState(false); 
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <nav className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100">
@@ -154,29 +153,41 @@ const Navbar = () => {
               </svg>
             </div>
             <span className="text-2xl font-black text-slate-900 tracking-tight">
-              Care<span className="text-blue-600">.infinity</span>
+              Care<span className="text-blue-600"> Infinity</span>
             </span>
           </Link>
 
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex items-center gap-10">
-            <Link href="/" className="text-sm font-bold text-slate-600 hover:text-blue-600 transition">
+            <Link
+              href="/"
+              className="text-sm font-bold text-slate-600 hover:text-blue-600 transition"
+            >
               Home
             </Link>
-            <Link href="/my-bookings" className="text-sm font-bold text-slate-600 hover:text-blue-600 transition">
+            <Link
+              href="/my-bookings"
+              className="text-sm font-bold text-slate-600 hover:text-blue-600 transition"
+            >
               My Bookings
             </Link>
 
             {status === "loading" ? (
               <div className="flex items-center gap-2 bg-slate-50 px-4 py-2 rounded-xl border border-slate-100">
                 <div className="w-4 h-4 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
-                <span className="text-xs font-bold text-slate-500">Verifying...</span>
+                <span className="text-xs font-bold text-slate-500">
+                  Verifying...
+                </span>
               </div>
             ) : status === "authenticated" ? (
               <div className="flex items-center gap-5">
                 <div className="flex flex-col items-end leading-tight">
-                  <span className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Welcome back</span>
-                  <span className="text-sm font-bold text-slate-900">{session.user?.name}</span>
+                  <span className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">
+                    Welcome back
+                  </span>
+                  <span className="text-sm font-bold text-slate-900">
+                    {session.user?.name}
+                  </span>
                 </div>
                 <button
                   onClick={() => signOut({ callbackUrl: "/" })}
@@ -196,7 +207,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <button 
+          <button
             className="md:hidden text-slate-900 p-2"
             onClick={() => setIsOpen(!isOpen)}
           >
@@ -208,28 +219,32 @@ const Navbar = () => {
         {isOpen && (
           <div className="md:hidden pb-6 pt-2 space-y-4 animate-in slide-in-from-top duration-300">
             <div className="flex flex-col gap-4">
-              <Link 
-                href="/" 
+              <Link
+                href="/"
                 className="text-base font-bold text-slate-600 px-2"
                 onClick={() => setIsOpen(false)}
               >
                 Home
               </Link>
-              <Link 
-                href="/my-bookings" 
+              <Link
+                href="/my-bookings"
                 className="text-base font-bold text-slate-600 px-2"
                 onClick={() => setIsOpen(false)}
               >
                 My Bookings
               </Link>
-              
+
               <hr className="border-slate-100" />
 
               {status === "authenticated" ? (
                 <div className="flex flex-col gap-4 px-2">
                   <div className="flex flex-col">
-                    <span className="text-[10px] uppercase text-slate-400 font-bold">Logged in as</span>
-                    <span className="text-sm font-bold text-slate-900">{session.user?.name}</span>
+                    <span className="text-[10px] uppercase text-slate-400 font-bold">
+                      Logged in as
+                    </span>
+                    <span className="text-sm font-bold text-slate-900">
+                      {session.user?.name}
+                    </span>
                   </div>
                   <button
                     onClick={() => signOut({ callbackUrl: "/" })}

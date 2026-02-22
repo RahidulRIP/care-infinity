@@ -21,7 +21,7 @@ const BookingList = () => {
       const data = await res.json();
       setBookings(data);
     } catch (error) {
-      console.error("Error fetching booking:", error);
+      // console.error("Error fetching booking:", error);
     } finally {
       setIsLoading(false);
     }

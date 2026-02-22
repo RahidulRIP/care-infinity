@@ -91,9 +91,9 @@ export async function POST(request) {
         };
 
         await transporter.sendMail(mailOptions);
-        console.log("Email sent successfully!");
+        // console.log("Email sent successfully!");
       } catch (emailError) {
-        console.error("Email Sending Failed:", emailError);
+        // console.error("Email Sending Failed:", emailError);
       }
     }
 
