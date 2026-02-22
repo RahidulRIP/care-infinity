@@ -17,9 +17,8 @@ export async function generateMetadata({ params }) {
 }
 
 const BookingPage = async ({ params }) => {
-  // const resolvedParams = use(params);
   const resolvedParams = await params;
-  // console.log(resolvedParams);
+
   const id = resolvedParams.id;
 
   const service = services.find((s) => s.id === id);

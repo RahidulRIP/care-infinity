@@ -63,7 +63,6 @@ const RegistrationForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5 w-full max-w-md mx-auto">
-      {/* Input Group Helper Function */}
       {[
         {
           name: "name",
